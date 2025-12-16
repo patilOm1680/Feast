@@ -1,8 +1,11 @@
-import React from "react";
+"use client"
+import React, { useEffect, useState } from "react";
 import appLogo from "../assets/navbar/appLogo.png";
 import Image from "next/image";
 import Link from "next/link";
+import { useAppSelector } from "@/lib/store/store";
 const Navbar = () => {
+  const totalLikes=useAppSelector((state)=>state.likes.items.length)
   return (
     <>
       <div className="bg-white shadow fixed w-full py-3 pl-14 z-50">
@@ -85,7 +88,7 @@ const Navbar = () => {
               <li className="ml-2 lg:ml-4 relative inline-block">
                 <Link className="" href="">
                   <div className="absolute -top-1 right-0 z-10 h-[20px] w-[20px] bg-red-400 text-xs font-bold px-1 py-0.5 rounded-full flex justify-center items-center">
-                    3
+                    {totalLikes}
                   </div>
                   <svg
                     className="h-9 lg:h-10 p-2 text-gray-500 svg-inline--fa fa-heart fa-w-16 fa-9x"

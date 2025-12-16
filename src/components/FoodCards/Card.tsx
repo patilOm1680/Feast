@@ -1,20 +1,27 @@
-"use client"
+"use client";
 import { recipeType } from "@/types/RecipeTypes/Recipe";
 import React from "react";
-import { styled } from '@mui/material/styles';
+import { styled } from "@mui/material/styles";
 import { Rating } from "@mui/material";
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { useAppDispatch, useAppSelector } from "@/lib/store/store";
+import { add } from "@/lib/store/features/likeSlice";
 const StyledRating = styled(Rating)({
-  '& .MuiRating-iconFilled': {
-    color: '#ff6d75',
+  "& .MuiRating-iconFilled": {
+    color: "#ff6d75",
   },
-  '& .MuiRating-iconHover': {
-    color: '#ff3d47',
+  "& .MuiRating-iconHover": {
+    color: "#ff3d47",
   },
 });
 
 const Card = ({ recipe }: { recipe: recipeType }) => {
+  const dispatch=useAppDispatch();
+  const arr=useAppSelector((state)=>state.likes.items);
+  const handleLikeClick = () => {
+    dispatch(add(recipe));
+  }
   return (
     <>
       <div className="flex flex-col w-[385px] bg-white p-3 rounded-2xl shadow gap-3 font-serif">
@@ -28,7 +35,7 @@ const Card = ({ recipe }: { recipe: recipeType }) => {
         <div className="flex items-center justify-between px-2 gap-5">
           <h1 className="font-bold text-2xl line-clamp-1">{recipe.name}</h1>
           <div className="flex items-center gap-2">
-            <Rating name="customized-10" defaultValue={1} max={1} readOnly/>
+            <Rating name="customized-10" defaultValue={1} max={1} readOnly />
             <p className="text-[22px] text-gray-500">{recipe.rating}</p>
           </div>
         </div>
@@ -36,14 +43,14 @@ const Card = ({ recipe }: { recipe: recipeType }) => {
           <h1 className="font-bold text-2xl text-amber-600">
             {recipe.prepTimeMinutes} min
           </h1>
-          
+
           <div className="flex items-center gap-2">
             <span className="font-bold  text-white bg-green-500 px-3 rounded-2xl">
-            {recipe.cuisine}
-          </span>
+              {recipe.cuisine}
+            </span>
             <StyledRating
               name="customized-color"
-              defaultValue={1}
+              defaultValue={0}
               getLabelText={(value: number) =>
                 `${value} Heart${value !== 1 ? "s" : ""}`
               }
@@ -51,6 +58,7 @@ const Card = ({ recipe }: { recipe: recipeType }) => {
               precision={1}
               icon={<FavoriteIcon fontSize="inherit" />}
               emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+              onClick={handleLikeClick}
             />
           </div>
         </div>
