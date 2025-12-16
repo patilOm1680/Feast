@@ -4,7 +4,6 @@ import ReduxProvider from "./ReduxProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer/Footer";
 
-
 export const metadata: Metadata = {
   title: "Feast",
 };
@@ -18,9 +17,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ReduxProvider>
-          <Navbar/>
-        {children}
-        <Footer/>
+          <Navbar />
+          {children}
+          <Footer />
         </ReduxProvider>
       </body>
     </html>

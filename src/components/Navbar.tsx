@@ -86,7 +86,7 @@ const Navbar = () => {
               </li>
 
               <li className="ml-2 lg:ml-4 relative inline-block">
-                <Link className="" href="">
+                <Link className="" href="/like">
                   <div className="absolute -top-1 right-0 z-10 h-[20px] w-[20px] bg-red-400 text-xs font-bold px-1 py-0.5 rounded-full flex justify-center items-center">
                     {totalLikes}
                   </div>
