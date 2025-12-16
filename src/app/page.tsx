@@ -8,15 +8,13 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
-      <div>
-        <Navbar/>
+     
         <div className="mx-22">
           <Carousel/>
           <Categories/>
           <FoodCards/>
-          <Footer/>
         </div>
-      </div>
+      
     </>
   );
 }
