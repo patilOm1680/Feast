@@ -16,7 +16,13 @@ export const likeSlice = createSlice({
   initialState,
   reducers: {
     add:(state,action)=>{
-        state.items.push(action.payload);
+        const isPresent=state.items.filter((obj)=>obj.id===action.payload.id);
+        if(isPresent.length===0){
+            state.items.push(action.payload);
+        }else{
+            const updatedItems=state.items.filter(obj=>obj.id!==action.payload.id)
+            state.items=[...updatedItems];
+        }
     }
   },
 })
