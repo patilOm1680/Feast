@@ -9,7 +9,7 @@ import img2 from "../../assets/carousel/saladBanner.png";
 import Image from "next/image";
 
 const CarouselCom = () => {
-  const handleDragStart = (e) => e.preventDefault();
+  const handleDragStart = (e: any) => e.preventDefault();
   const items = [
     <Image
       src={img1}
@@ -25,10 +25,10 @@ const CarouselCom = () => {
       alt="carousel image"
       role="presentation"
       style={{ objectFit: "contain" }}
-       loading="eager"
+      loading="eager"
     />,
   ];
-  const renderPrevButton = ({ isDisabled }:{isDisabled:boolean}) => {
+  const renderPrevButton = ({ isDisabled }: { isDisabled: any }) => {
     return (
       <button className="carousel-nav-btn prev-btn" disabled={isDisabled}>
         <ChevronLeft size={30} />
@@ -36,7 +36,7 @@ const CarouselCom = () => {
     );
   };
 
-  const renderNextButton = ({ isDisabled }:{isDisabled:boolean}) => {
+  const renderNextButton = ({ isDisabled }: { isDisabled: any }) => {
     return (
       <button className="carousel-nav-btn next-btn" disabled={isDisabled}>
         <ChevronRight size={30} />
@@ -47,6 +47,10 @@ const CarouselCom = () => {
     <div className="pt-14">
       <div className="carousel-container-wrapper">
         <AliceCarousel
+          {...({
+            renderPrevButton,
+            renderNextButton,
+          } as any)}
           mouseTracking
           items={items}
           autoPlay={true}
