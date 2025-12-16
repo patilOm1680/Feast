@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>No Liked Recipes - Feast</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#84cc16", // Lime green from the logo/buttons
+                        "primary-dark": "#65a30d",
+                        "secondary": "#f97316", // Orange from buttons
+                        "background-light": "#f8f9fa",
+                        "background-dark": "#18181b",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#27272a",
+                        "text-light": "#1f2937",
+                        "text-dark": "#f3f4f6",
+                        "subtext-light": "#6b7280",
+                        "subtext-dark": "#9ca3af",
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.75rem",
+                        xl: "1rem",
+                        "2xl": "1.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+
+<div
+    class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-sans min-h-screen flex flex-col transition-colors duration-200">
+    
+    <main class="flex-grow container mx-auto px-4 lg:px-8 py-8 flex flex-col">
+       
+        <div class="flex-grow flex flex-col items-center justify-center py-12 lg:py-20 text-center animate-fade-in-up">
+            <div class="relative w-64 h-64 lg:w-80 lg:h-80 mb-8">
+                <div
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/10 dark:bg-primary/5 rounded-full blur-3xl">
+                </div>
+                <div class="relative z-10 w-full h-full flex items-center justify-center">
+                    <svg class="w-full h-full text-gray-300 dark:text-zinc-700" fill="none" viewBox="0 0 200 200"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M100 180C144.183 180 180 144.183 180 100C180 55.8172 144.183 20 100 20C55.8172 20 20 55.8172 20 100C20 144.183 55.8172 180 100 180Z"
+                            fill="currentColor" fill-opacity="0.1"></path>
+                        <path
+                            d="M65 100C65 108.284 58.2843 115 50 115C41.7157 115 35 108.284 35 100M165 100C165 108.284 158.284 115 150 115C141.716 115 135 108.284 135 100"
+                            stroke="currentColor" stroke-linecap="round" stroke-width="8"></path>
+                        <path d="M70 70L80 50M130 70L120 50" stroke="currentColor" stroke-linecap="round"
+                            stroke-width="6"></path>
+                        <circle cx="100" cy="100" r="60" stroke="currentColor" stroke-dasharray="10 10"
+                            stroke-width="4"></circle>
+                        <path d="M80 130C90 140 110 140 120 130" stroke="currentColor" stroke-linecap="round"
+                            stroke-width="6"></path>
+                        <g class="animate-bounce" style="animation-duration: 3s;">
+                            <path d="M150 50L170 30" stroke="#f97316" stroke-linecap="round" stroke-width="4"></path>
+                            <circle cx="160" cy="40" fill="#f97316" r="5"></circle>
+                        </g>
+                    </svg>
+                    <div
+                        class="absolute bottom-4 right-10 bg-surface-light dark:bg-surface-dark p-4 rounded-full shadow-lg border border-gray-100 dark:border-zinc-700">
+                        <span class="material-icons text-gray-400 dark:text-gray-500 text-3xl">heart_broken</span>
+                    </div>
+                </div>
+            </div>
+            <h1 class="font-display text-4xl lg:text-5xl font-bold text-text-light dark:text-text-dark mb-4">
+                No Liked Recipes Yet
+            </h1>
+            <p
+                class="text-subtext-light dark:text-subtext-dark text-lg lg:text-xl max-w-xl mx-auto mb-10 leading-relaxed">
+                Your cookbook is looking a little empty! Tap the heart icon on any recipe you love to save it here for
+                later.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                <a class="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                    href="#">
+                    <span class="material-icons">restaurant_menu</span>
+                    Explore Recipes
+                </a>
+                <a class="bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 hover:border-primary dark:hover:border-primary text-text-light dark:text-text-dark px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-md transition-all flex items-center justify-center gap-2"
+                    href="#">
+                    <span class="material-icons text-secondary">local_fire_department</span>
+                    Trending Now
+                </a>
+            </div>
+        </div>
+        
+    </main>
+    <footer class="bg-surface-light dark:bg-surface-dark mt-12 py-8 border-t border-gray-200 dark:border-zinc-800">
+        <div class="container mx-auto px-4 lg:px-8 text-center text-subtext-light dark:text-subtext-dark">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <span class="material-icons text-primary">restaurant</span>
+                <span class="font-display font-bold text-xl text-text-light dark:text-text-dark">FEAST</span>
+            </div>
+            <p class="text-sm">© 2023 Feast Recipes. All rights reserved.</p>
+        </div>
+    </footer>
+</div>
+
+</html>
