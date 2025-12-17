@@ -2,7 +2,7 @@ import React from 'react'
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
 import Image from 'next/image';
-import emptyImg from "../../assets/EmptyLikeSection/Empty.png";
+import Link from 'next/link';
 const EmptyLikeList = () => {
   return (
     <>
@@ -34,7 +34,7 @@ const EmptyLikeList = () => {
                         
                     </svg> */}
                     
-                    <Image src={emptyImg} alt="" className='object-fill w-[600px] scale-200'/>
+                    <Image src="/EmptyLikeSection/Empty.png" width={600} height={1400} alt="" className='object-fill scale-200'/>
                 </div>
             </div>
             <h1 className="font-display text-4xl lg:text-5xl font-bold text-text-light dark:text-text-dark mb-4">
@@ -46,16 +46,16 @@ const EmptyLikeList = () => {
                 later.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                <a className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 bg-green-300"
-                    href="#">
+                <Link className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 bg-green-300"
+                    href="/">
                     <span className="material-icons"><RestaurantMenuIcon/></span>
                     Explore Recipes
-                </a>
-                <a className="bg-white  border border-gray-200 hover:border-primary dark:hover:border-primary text-text-light dark:text-text-dark px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-md transition-all flex items-center justify-center gap-2"
-                    href="#">
+                </Link>
+                <Link className="bg-white  border border-gray-200 hover:border-primary dark:hover:border-primary text-text-light dark:text-text-dark px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-md transition-all flex items-center justify-center gap-2"
+                    href="/">
                     <span className="material-icons text-secondary"><WhatshotIcon/></span>
                     Trending Now
-                </a>
+                </Link>
             </div>
         </div>
         

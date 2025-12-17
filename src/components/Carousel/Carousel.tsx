@@ -4,28 +4,28 @@ import "./carousel.css";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import img1 from "../../assets/carousel/saladBanner.png";
-import img2 from "../../assets/carousel/saladBanner.png";
 import Image from "next/image";
 
 const CarouselCom = () => {
   const handleDragStart = (e: any) => e.preventDefault();
   const items = [
     <Image
-      src={img1}
+      src="/carousel/saladBanner.png"
       onDragStart={handleDragStart}
       alt="carousel image"
       role="presentation"
       style={{ objectFit: "contain" }}
       loading="eager"
+      fill
     />,
     <Image
-      src={img2}
+      src="/carousel/saladBanner.png"
       onDragStart={handleDragStart}
       alt="carousel image"
       role="presentation"
       style={{ objectFit: "contain" }}
       loading="eager"
+      fill
     />,
   ];
   const renderPrevButton = ({ isDisabled }: { isDisabled: any }) => {

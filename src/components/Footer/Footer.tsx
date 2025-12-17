@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import appLogo from "../../assets/navbar/appLogo.png"
 import Image from "next/image";
 const Footer = () => {
   return (
@@ -13,7 +12,7 @@ const Footer = () => {
                 href="/"
                 className="flex justify-center lg:justify-start"
               >
-                <Image src={appLogo} alt="logo image" className="h-20 w-auto"/>
+                <img src="/navbar/appLogo.png" alt="logo image" className="h-20 w-auto"/>
               </Link>
               <p className="py-8 text-sm text-gray-500 lg:max-w-xs text-center lg:text-left">
                 Trusted in more than 100 countries & 5 million customers. Have
