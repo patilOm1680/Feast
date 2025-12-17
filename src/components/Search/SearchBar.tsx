@@ -2,43 +2,67 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 import { useRouter } from "next/navigation";
+import { recipeArr } from "@/types/RecipeTypes/Recipe";
 
 export default function SearchBar() {
-  const [searchData, setSearchData] = useState<any[]>([]);
+  const [searchData, setSearchData] = useState<recipeArr>([]);
+  const [filteredData, setFilteredData] = useState<recipeArr>([]);
+  const [selectedValue, setSelectedValue] = useState("All");
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch("https://dummyjson.com/recipes?limit=100");
       const data = await response.json();
       setSearchData(data.recipes);
+      setFilteredData(data.recipes);
     };
     fetchData();
   }, []);
 
-  const router=useRouter();
-  const handleSearchChange = (e:React.SyntheticEvent,value:string) => {
-    const filterData=searchData.filter((obj)=>obj.name===value);
-    console.log(filterData);
-    router.push(`/product/${filterData[0].id}`)
-    
-  }
+  useEffect(() => {
+    if (selectedValue === "All") {
+      setFilteredData(searchData);
+    } else {
+      const updated = searchData.filter((obj) => {
+        if (!obj.mealType) return false;
 
-  
+        return obj.mealType.some(
+          (meal) => meal.toLowerCase() === selectedValue.toLowerCase()
+        );
+      });
+
+      setFilteredData(updated);
+    }
+  }, [selectedValue, searchData]);
+
+  const router = useRouter();
+  const handleSearchChange = (e: React.SyntheticEvent, value: string) => {
+    const filterData = searchData.filter((obj) => obj.name === value);
+    // console.log(filterData);
+    router.push(`/product/${filterData[0].id}`);
+  };
+
+  const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedValue(e.target.value);
+    // console.log(selectedValue);
+  };
+
   return (
     <>
       <div className="w-full max-w-xs xl:max-w-lg 2xl:max-w-2xl bg-gray-100 rounded-md hidden xl:flex items-center">
         <select
           className="bg-transparent uppercase font-bold text-sm p-4 mr-4 outline-none"
-          name=""
-          id=""
+          value={selectedValue}
+          onChange={handleSelectChange}
         >
-          <option value="">All Categories</option>
-          <option>Dinner</option>
-          <option>Lunch</option>
-          <option>Breakfast</option>
-          <option>Beverage</option>
-          <option>Dessert</option>
+          <option value="All">All Categories</option>
+          <option value="Dinner">Dinner</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Beverage">Beverage</option>
+          <option value="Dessert">Dessert</option>
         </select>
 
         {/* <input
@@ -79,11 +103,11 @@ export default function SearchBar() {
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
                 border: "none",
-              }
+              },
             },
           }}
           onChange={handleSearchChange}
-          options={searchData.map((option) => option.name)}
+          options={filteredData.map((option) => option.name)}
           renderInput={(params) => (
             <TextField
               {...params}
@@ -98,7 +122,7 @@ export default function SearchBar() {
           )}
         />
         <div className="cursor-pointer h-5 px-4 text-gray-500 svg-inline--fa fa-search fa-w-16 fa-9x">
-          <SearchIcon/>
+          <SearchIcon />
         </div>
       </div>
     </>

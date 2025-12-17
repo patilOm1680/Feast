@@ -14,6 +14,6 @@ export interface recipeType {
   image?: string;
   rating?: number;
   reviewCount?: number;
-  mealType?: string[];
+  mealType?: string[] | undefined;
 }
 export type recipeArr=recipeType[]
