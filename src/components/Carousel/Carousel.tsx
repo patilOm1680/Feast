@@ -25,6 +25,8 @@ const CarouselCom = () => {
       role="presentation"
       style={{ objectFit: "contain" }}
       loading="eager"
+      // width={1665}
+      // height={466}
       fill
     />,
   ];
@@ -44,7 +46,7 @@ const CarouselCom = () => {
     );
   };
   return (
-    <div className="pt-14">
+    <div className="pt-14 md:pt-0 md:-mt-8 relative z-10">
       <div className="carousel-container-wrapper">
         <AliceCarousel
           {...({

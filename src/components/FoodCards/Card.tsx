@@ -1,112 +1,125 @@
 "use client";
 import { recipeType } from "@/types/RecipeTypes/Recipe";
 import React, { useEffect, useState } from "react";
-import { styled } from "@mui/material/styles";
 import { Rating } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
+import StarIcon from "@mui/icons-material/Star";
+import { styled } from "@mui/material/styles";
 import { useAppDispatch, useAppSelector } from "@/lib/store/store";
 import { add, remove } from "@/lib/store/features/likeSlice";
 import { useRouter } from "next/navigation";
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import Image from "next/image";
-
+import CircleIcon from '@mui/icons-material/Circle';
 
 const StyledRating = styled(Rating)({
-  "& .MuiRating-iconFilled": {
-    color: "#ff6d75",
-  },
-  "& .MuiRating-iconHover": {
-    color: "#ff3d47",
-  },
+  "& .MuiRating-iconFilled": { color: "#ff4d6d" },
+  "& .MuiRating-iconHover": { color: "#ff1e56" },
 });
 
 const Card = ({ recipe }: { recipe: recipeType }) => {
   const dispatch = useAppDispatch();
-
-  const arr = useAppSelector((state) => state.likes.items);
-
+  const likedItems = useAppSelector((state) => state.likes.items);
+  const router = useRouter();
   const [isLiked, setIsLiked] = useState(0);
-
-  const isPresentInLiked = () => {
-    for (let obj of arr) {
-      if (obj.id === recipe.id) {
-        return true;
-      }
-    }
-    return false;
-  };
+  const [isVeg,setIsVeg]=useState(true);
   useEffect(() => {
-    if (isPresentInLiked()) {
-      setIsLiked(1);
-    } else setIsLiked(0);
-  }, [arr]);
+    if(recipe.ingredients)
+    for (const ingredient of recipe.ingredients) {
+      if(ingredient.toLocaleLowerCase().includes("chicken") || ingredient.toLocaleLowerCase().includes("eggs")){
+          setIsVeg(false);
+      } 
+    }
+  }, []);
+  useEffect(() => {
+    setIsLiked(likedItems.some((i) => i.id === recipe.id) ? 1 : 0);
+  }, [likedItems, recipe.id]);
 
   const handleLikeChange = (
-    event: React.SyntheticEvent<Element, Event>,
-    newValue: number | null
+    e: React.SyntheticEvent,
+    value: number | null
   ) => {
-    event.stopPropagation();
-    if (newValue === 1) {
-      dispatch(add(recipe));
-    } else {
-      dispatch(remove(recipe));
-    }
+    e.stopPropagation();
+    value === 1 ? dispatch(add(recipe)) : dispatch(remove(recipe));
   };
 
-  const router=useRouter();
-  const handleCardClick = () => {
-    router.push(`/product/${recipe.id}`)
-  }
   return (
-    <>
-      <div className="flex flex-col w-[385px] bg-white p-3 rounded-2xl shadow gap-3 font-serif cursor-pointer" onClick={handleCardClick}>
-        <div className="bg-emerald-100 rounded-2xl w-full">
-          <Image
-            src={recipe.image || "../../assets/navbar/appLogo.png"}
-            alt=""
-            className="object-cover h-60 rounded-2xl w-full"
-            width={300}
-            height={250}
+    <div
+      onClick={() => router.push(`/product/${recipe.id}`)}
+      className="w-[385px] md:mx-0 mx-5 bg-white rounded-[28px] shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden"
+    >
+      <div className="relative h-64">
+        <Image
+          src={recipe.image || '/navbar/appLogo.png'}
+          alt="card Image"
+          fill
+          className="object-cover"
+          priority
+        />
+
+        <span className="absolute top-4 left-4 bg-white text-xs font-semibold px-3 py-1 rounded-full shadow flex items-center gap-1" style={{border:isVeg?"2px solid green":"2px solid red"}}>
+          <CircleIcon sx={{fontSize:"16px",color:isVeg?"green":"red"}}/>
+          <p style={{color:isVeg?"green":"red"}}>{isVeg?"VEG":"NON-VEG"}</p>
+          
+        </span>
+
+        <div
+          className="absolute -bottom-5 right-4 bg-white h-[55px] w-[55px] rounded-full shadow-lg flex items-center justify-center"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <StyledRating
+            value={isLiked}
+            max={1}
+            icon={<FavoriteIcon fontSize="large" />}
+            emptyIcon={<FavoriteBorderIcon fontSize="large" />}
+            onChange={handleLikeChange}
           />
         </div>
-        <div className="flex items-center justify-between px-2 gap-5">
-          <h1 className="font-bold text-2xl line-clamp-1">{recipe.name}</h1>
-          <div className="flex items-center gap-2">
-            <Rating name="customized-10" defaultValue={1} max={1} readOnly />
-            <p className="text-[22px] text-gray-500">{recipe.rating}</p>
-          </div>
-        </div>
-        <div className="flex items-center justify-between px-2 gap-5">
-          <h1 className="font-bold text-2xl text-amber-600">
-            <AccessTimeIcon sx={{marginRight:"4px",marginBottom:"4px"}}/>
-            {recipe.prepTimeMinutes} min
-          </h1>
+      </div>
 
-          <div className="flex items-center gap-2">
-            <StyledRating
-              name="customized-color"
-              value={isLiked}
-              getLabelText={(value: number) =>
-                `${value} Heart${value !== 1 ? "s" : ""}`
-              }
-              max={1}
-              precision={1}
-              icon={<FavoriteIcon fontSize="inherit" />}
-              emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
-              onClick={(e) => e.stopPropagation()} 
-              onChange={handleLikeChange}
-            />
-            <span className="font-bold  text-white bg-green-500 px-3 rounded-2xl">
-              {recipe.cuisine}
+      <div className="pt-6 px-5 pb-6 space-y-5">
+        <div className="flex items-start justify-between gap-4">
+          <h2 className="text-2xl font-bold text-gray-800 leading-snug line-clamp-2">
+            {recipe.name}
+          </h2>
+
+          <div className="flex items-center gap-1 bg-yellow-50 px-3 py-1.5 rounded-full shadow-sm">
+            <StarIcon className="text-yellow-500 text-[18px]" />
+            <span className="font-bold text-gray-800">
+              {recipe.rating}
             </span>
           </div>
         </div>
-        {/* <div>
-        <p className="text-[20px] line-clamp-3">{obj.description}</p>
-      </div> */}
+
+        <div className="flex gap-4">
+          <div className="flex items-center gap-3 bg-gray-100 px-4 py-3 rounded-2xl w-1/2">
+            <AccessTimeIcon className="text-orange-500" />
+            <div>
+              <p className="text-xs text-gray-500 font-semibold tracking-wide">
+                PREP TIME
+              </p>
+              <p className="font-bold text-gray-800">
+                {recipe.prepTimeMinutes} min
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 bg-gray-100 px-4 py-3 rounded-2xl w-1/2">
+            <LocalFireDepartmentIcon className="text-red-500" />
+            <div>
+              <p className="text-xs text-gray-500 font-semibold tracking-wide">
+                CALORIES
+              </p>
+              <p className="font-bold text-gray-800">
+                {recipe.caloriesPerServing}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

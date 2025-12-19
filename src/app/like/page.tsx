@@ -11,7 +11,7 @@ const page = () => {
     <>
 
       {
-        (likedItems.length!==0)? (<div className='flex items-center flex-wrap pt-30 gap-10 mx-22'>
+        (likedItems.length!==0)? (<div className='flex items-center flex-wrap  pt-20 md:pt-30 gap-10 mx-0 md:mx-22'>
             {likedItems.map(obj=>{
                 return <Card key={obj.id} recipe={obj}/>
             })}

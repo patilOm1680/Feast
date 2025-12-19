@@ -9,8 +9,11 @@ export default function Home() {
   return (
     <>
      
-        <div className="mx-22">
-          <Carousel/>
+        <div className="pt-[80px] md:mx-22 mx-0">
+          <div className="hidden md:block">
+            <Carousel/>
+          </div>
+          
           <Categories/>
           <FoodCards/>
         </div>

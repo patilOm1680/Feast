@@ -5,20 +5,19 @@ import Autocomplete from "@mui/material/Autocomplete";
 import SearchIcon from "@mui/icons-material/Search";
 import { useRouter } from "next/navigation";
 import { recipeArr } from "@/types/RecipeTypes/Recipe";
-
+import { fetchData } from "@/lib/api/fetchData";
 export default function SearchBar() {
   const [searchData, setSearchData] = useState<recipeArr>([]);
   const [filteredData, setFilteredData] = useState<recipeArr>([]);
   const [selectedValue, setSelectedValue] = useState("All");
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("https://dummyjson.com/recipes?limit=100");
-      const data = await response.json();
-      setSearchData(data.recipes);
-      setFilteredData(data.recipes);
+    const getData = async () => {
+      const data = await fetchData();
+      setSearchData(data);
+      setFilteredData(data);
     };
-    fetchData();
+    getData();
   }, []);
 
   useEffect(() => {

@@ -3,7 +3,9 @@ import "./globals.css";
 import ReduxProvider from "./ReduxProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer/Footer";
-
+import {
+  ClerkProvider
+} from "@clerk/nextjs";
 export const metadata: Metadata = {
   title: "Feast",
 };
@@ -14,14 +16,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
     <html lang="en">
       <body>
-        <ReduxProvider>
-          <Navbar />
-          {children}
-          <Footer />
-        </ReduxProvider>
+        
+          <ReduxProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </ReduxProvider>
+        
       </body>
     </html>
+    </ClerkProvider>
   );
 }
