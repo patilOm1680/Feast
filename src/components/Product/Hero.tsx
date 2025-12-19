@@ -11,8 +11,8 @@ const Hero = ({recipe}:{recipe:recipeType}) => {
           </div>
           
           <Image
-            src={recipe.image}
-            alt={recipe.name}
+            src={recipe.image ||"/navbar/appLogo.png"}
+            alt={recipe.name ||"/navbar/appLogo.png"}
             height={500}
             width={900}
             className="w-full h-96 md:h-[500px] object-cover"
