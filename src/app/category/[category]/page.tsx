@@ -1,5 +1,6 @@
 "use client"
 import Card from '@/components/FoodCards/Card';
+import Loader from '@/components/Loaders/Loader';
 import { categoryData } from '@/lib/api/categoryData';
 import { recipeArr } from '@/types/RecipeTypes/Recipe';
 import { useParams } from 'next/navigation'
@@ -15,6 +16,12 @@ const page = () => {
       }
       fetchData();
     }, []);
+
+    if (data.length==0) {
+    return (
+      <Loader/>
+    );
+  }
     
   return (
     <>
