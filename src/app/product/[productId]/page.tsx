@@ -11,6 +11,7 @@ import NutritionInfo from "@/components/Product/NutritionInfo";
 import Loader from "@/components/Loaders/Loader";
 
 const RecipeDetailPage = () => {
+  
   const { productId } = useParams<{ productId: string }>();
   const [recipe, setRecipe] = useState<recipeType | null>(null);
 
