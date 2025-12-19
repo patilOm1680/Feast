@@ -1,6 +1,7 @@
 import { recipeType } from '@/types/RecipeTypes/Recipe'
 import React from 'react'
 import {Rating,Chip} from "@mui/material";
+import Image from 'next/image';
 const Hero = ({recipe}:{recipe:recipeType}) => {
   return (
     <>
@@ -9,9 +10,11 @@ const Hero = ({recipe}:{recipe:recipeType}) => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10">
           </div>
           
-          <img
+          <Image
             src={recipe.image}
             alt={recipe.name}
+            height={500}
+            width={900}
             className="w-full h-96 md:h-[500px] object-cover"
           />
           <div className="absolute bottom-8 left-8 right-8 z-20">

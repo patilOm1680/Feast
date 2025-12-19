@@ -19,14 +19,12 @@ const CarouselCom = () => {
       fill
     />,
     <Image
-      src="/carousel/saladBanner.png"
+      src="/carousel/Banner2.png"
       onDragStart={handleDragStart}
       alt="carousel image"
       role="presentation"
       style={{ objectFit: "contain" }}
       loading="eager"
-      // width={1665}
-      // height={466}
       fill
     />,
   ];
