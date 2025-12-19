@@ -54,6 +54,7 @@ const Card = ({ recipe }: { recipe: recipeType }) => {
         <Image
           src={recipe.image || '/navbar/appLogo.png'}
           alt="card Image"
+          loading="eager"
           fill
           className="object-cover"
           priority
