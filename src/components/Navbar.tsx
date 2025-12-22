@@ -40,8 +40,8 @@ const Navbar = () => {
             <ul className="flex items-center gap-3 sm:gap-4 md:gap-6 justify-end">
               <li className="hidden md:inline-block">
                 <Link
-                  className="text-sm md:text-base hover:text-gray-600 transition-colors"
-                  href=""
+                  className="text-sm md:text-base hover:text-gray-600 transition-colors font-bold"
+                  href="/"
                 >
                   Home
                 </Link>
@@ -49,15 +49,15 @@ const Navbar = () => {
 
               <li className="hidden md:inline-block">
                 <Link
-                  className="text-sm md:text-base hover:text-gray-600 transition-colors"
-                  href=""
+                  className="text-sm md:text-base hover:text-gray-600 transition-colors font-bold"
+                  href="/"
                 >
                   Help
                 </Link>
               </li>
 
               <li className="relative inline-block">
-                <Link className="" href="/like">
+                <Link href="/like">
                   {totalLikes > 0 && (
                     <div className="absolute -top-1 right-0 z-10 h-[18px] w-[18px] sm:h-[20px] sm:w-[20px] bg-red-400 text-xs font-medium px-1 py-0.5 rounded-full flex justify-center items-center text-white">
                       {totalLikes}

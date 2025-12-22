@@ -13,7 +13,7 @@ export default async function FoodCards() {
           if (index >= 0 && index <= 7)
             return <Card key={recipe.id} recipe={recipe} />;
         })}
-        <div className="w-full">
+        <div className="w-full md:-mb-4 mb-0">
           <p className="text-[30px] md:text-[34px] font-bold ps-4 md:ps-0">Recommended Recipes</p>
         </div>
         {data.map((recipe, index) => {
