@@ -68,7 +68,7 @@ NEXT_PUBLIC_FETCH_RECIPE_BY_ID=https://dummyjson.com/recipes
 
 #clerk key
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_YmV0dGVyLWJlZGJ1Zy03Mi5jbGVyay5hY2NvdW50cy5kZXYk
-
+```
 
 ## Screenshots
 ![App Screenshot](./public/readme/SS3.png)
