@@ -54,7 +54,7 @@ const CarouselCom = () => {
           mouseTracking
           items={items}
           autoPlay={true}
-          autoPlayInterval={10000}
+          autoPlayInterval={50000}
           infinite={true}
           renderPrevButton={renderPrevButton}
           renderNextButton={renderNextButton}

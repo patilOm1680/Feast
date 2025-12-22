@@ -5,8 +5,8 @@ import { Card, CardContent, Chip } from "@mui/material";
 const NutritionInfo = ({ recipe }: { recipe: recipeType }) => {
   return (
     <>
-      <Card className="shadow-xl border-none overflow-hidden">
-        <div className="bg-[#7551AA] p-6">
+      <Card className="shadow-xl border-none overflow-hidden rounded-t-3xl">
+        <div className="bg-[#7551AA] p-6 rounded-t-3xl">
           <h3 className="text-2xl font-black text-white flex items-center gap-2">
             <span className="text-3xl">📊</span> Nutrition & Info
           </h3>

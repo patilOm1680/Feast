@@ -6,7 +6,10 @@ import { useAppDispatch } from "@/lib/store/store";
 import { add } from "@/lib/store/features/cartSlice";
 
 const Ingredients = ({ recipe }: { recipe: recipeType }) => {
+
+
   const [checkedIngredients, setCheckedIngredients] = useState<string[]>([]);
+  
   const toggleIngredient = (ingredient: string) => {
     setCheckedIngredients((prev) =>
       prev.includes(ingredient)
@@ -21,7 +24,7 @@ const Ingredients = ({ recipe }: { recipe: recipeType }) => {
   };
   return (
     <>
-      <div className="w-full lg:w-96 lg:sticky lg:top-24 lg:self-start">
+      <div className="w-full lg:w-96 md:sticky md:top-24 md:self-start">
         <Card className="shadow-xl border-none  bg-[#449C6D]  overflow-hidden">
           <div className="bg-[#449C6D] p-6 rounded-t-3xl">
             <div className="flex justify-between items-center">

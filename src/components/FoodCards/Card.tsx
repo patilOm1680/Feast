@@ -28,7 +28,7 @@ const Card = ({ recipe }: { recipe: recipeType }) => {
   useEffect(() => {
     if(recipe.ingredients)
     for (const ingredient of recipe.ingredients) {
-      if(ingredient.toLocaleLowerCase().includes("chicken") || ingredient.toLocaleLowerCase().includes("eggs")){
+      if(ingredient.toLocaleLowerCase().includes("chicken") || ingredient.toLocaleLowerCase().includes("eggs") || ingredient.toLocaleLowerCase().includes("beef")){
           setIsVeg(false);
       } 
     }

@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🍝 Feast | Recipe Viewer - [(Link)](https://feast-lovat.vercel.app/)
 
-## Getting Started
+Feast is a Recipe Viewer application built using **Next.js**, **Tailwind CSS**, **Redux Toolkit** to Simplify the process of Recipe Searching.
 
-First, run the development server:
+![App Screenshot](./public/readme/SS1.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 📖 Table of Contents
+- [Introduction](#-introduction)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Installation](#️-installation)
+- [API](#-api)
+- [Screenshots](#screenshots)
+- [License](#-license)
+
+## 📝 Introduction
+Feast is Modern, Responsive online Recipe Viewer App where users can browse, search Recipes with Categories(Lunch, Dinner, Breakfast, Beverage etc) and manage a shopping cart.
+
+## ✨ Features
+- Recipe Browsing With categories
+- Responsive UI
+- Search Recipes (By title)
+- Add Recipes to favorites
+- Manage Shopping List
+- Authentication with clerk
+- Global Store(Redux Toolkit)
+
+
+
+## 🧰 Tech Stack
+- [Next.js](https://nextjs.org/docs)
+- [Material UI (MUI)](https://mui.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [clerk (Library for Authentication)](https://clerk.com/docs/nextjs/getting-started/quickstart)
+
+## ⚙️ Installation
+
+```
+git clone git@github.com:patilOm1680/Feast.git
+```
+```
+cd Feast
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## 🔌 API
 
-To learn more about Next.js, take a look at the following resources:
+### Setup Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Create a `.env.local` file in the root directory of the project.
+2. Add the following environment variables to the `.env.local` file:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+#All Recipes
+NEXT_PUBLIC_RECIPIES=https://dummyjson.com/recipes?limit=100
 
-## Deploy on Vercel
+# Recipe by id
+NEXT_PUBLIC_FETCH_RECIPE_BY_ID=https://dummyjson.com/recipes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#clerk key
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_YmV0dGVyLWJlZGJ1Zy03Mi5jbGVyay5hY2NvdW50cy5kZXYk
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Screenshots
+![App Screenshot](./public/readme/SS3.png)
+![App Screenshot](./public/readme/SS2.png)
+![App Screenshot](./public/readme/SS4.png)
+![App Screenshot](./public/readme/SS5.png)
+![App Screenshot](./public/readme/SS6.png)
+![App Screenshot](./public/readme/SignIn.png)
+
+
+## 📄 License
+No license right now.
