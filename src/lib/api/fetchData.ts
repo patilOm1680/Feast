@@ -2,6 +2,7 @@
 import axios from 'axios';
 
 export const fetchData = async () => {
-  const response = await axios.get('https://dummyjson.com/recipes?limit=100');
+  const url=`${process.env.NEXT_PUBLIC_RECIPIES}`
+  const response = await axios.get(url);
   return response.data.recipes;
 };
