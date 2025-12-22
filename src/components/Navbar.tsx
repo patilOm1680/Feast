@@ -13,10 +13,12 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const totalLikes = useAppSelector((state) => state.likes.items.length);
   const cartItems=useAppSelector((state)=>state.cart.cartItems);
+  const pathname=usePathname();
   return (
     <>
       <div className="bg-white shadow fixed top-0 left-0 w-full py-3 px-4 sm:px-6 md:px-8 lg:pl-14 z-[9999]">
@@ -40,7 +42,7 @@ const Navbar = () => {
             <ul className="flex items-center gap-3 sm:gap-4 md:gap-6 justify-end">
               <li className="hidden md:inline-block">
                 <Link
-                  className="text-sm md:text-base hover:text-gray-600 transition-colors font-bold"
+                  className={`text-sm md:text-base hover:border-b-2 font-bold ${pathname=='/'?"border-b-2":""}`}
                   href="/"
                 >
                   Home
