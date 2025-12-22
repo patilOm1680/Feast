@@ -10,7 +10,14 @@ export default async function FoodCards() {
     <>
       <div className="flex items-center flex-wrap mt-8 gap-10">
         {data.map((recipe, index) => {
-          if (index >= 0 && index <= 19)
+          if (index >= 0 && index <= 7)
+            return <Card key={recipe.id} recipe={recipe} />;
+        })}
+        <div className="w-full">
+          <p className="text-[30px] md:text-[34px] font-bold ps-4 md:ps-0">Recommended Recipes</p>
+        </div>
+        {data.map((recipe, index) => {
+          if (index >= 8 && index <= 15)
             return <Card key={recipe.id} recipe={recipe} />;
         })}
       </div>

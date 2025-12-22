@@ -22,8 +22,8 @@ const Ingredients = ({ recipe }: { recipe: recipeType }) => {
   return (
     <>
       <div className="w-full lg:w-96 lg:sticky lg:top-24 lg:self-start">
-        <Card className="shadow-xl border-none bg-[#449C6D] overflow-hidden">
-          <div className="bg-[#449C6D] p-6">
+        <Card className="shadow-xl border-none  bg-[#449C6D]  overflow-hidden">
+          <div className="bg-[#449C6D] p-6 rounded-t-3xl">
             <div className="flex justify-between items-center">
               <h3 className="text-2xl font-black text-white flex items-center gap-2">
                 <CheckCircle /> Ingredients

@@ -5,7 +5,7 @@ const Instructions = ({ recipe }: { recipe: recipeType }) => {
   return (
     <>
       <Card className="shadow-xl mb-8 border-none overflow-hidden">
-        <div className="bg-[#7551AA] p-6">
+        <div className="bg-[#7551AA] p-6 rounded-t-3xl">
           <h3 className="text-3xl font-black text-white flex items-center gap-3">
             <span className="text-4xl">👨‍🍳</span> Instructions
           </h3>
